@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MoreGrow Career Partners</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* VOICE: confident, warm, expert; one advisor speaking to one professional
+   IDEA: a personal advisory "brief" in deep blue glass, matching the reference layout
+   PICTURE: the expert's profile card with a before/after resume line beside it
+   COLOUR and TYPE: deep blue ground, glass panels, warm orange accent; Inter Tight display + Inter body
+   LAYOUT: sticky nav, hero, goals, numbered sections, service cards, employers, approach, expert, results, FAQ, CTA, footer */
+:root{color-scheme:dark;--bg:#081733;--bg2:#0c2149;--glass:rgba(22,52,104,.55);--line:rgba(140,175,235,.22);--ink:#eef3ff;--soft:#b7c4e0;--mute:#8d9cbd;--acc:#f2994a;--acc2:#ffb877}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(900px 600px at 80% -10%,rgba(46,98,196,.55),transparent 60%),radial-gradient(700px 500px at -10% 40%,rgba(30,70,150,.45),transparent 60%),linear-gradient(180deg,#0a1c3f,#081733 60%,#071430);}
+body::after{content:"";position:fixed;inset:0;z-index:-1;background-image:linear-gradient(rgba(140,175,235,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(140,175,235,.05) 1px,transparent 1px);background-size:56px 56px;mask-image:linear-gradient(180deg,#000,transparent 70%)}
+a{color:inherit}
+[hidden]{display:none!important}
+h1,h2,h3{font-family:"Inter Tight",Inter,sans-serif;margin:0;letter-spacing:-.03em;line-height:1.02;text-wrap:balance}
+h1{font-size:clamp(44px,7vw,92px);font-weight:700}
+h2{font-size:clamp(34px,5vw,64px);font-weight:700}
+h3{font-size:22px;font-weight:600;letter-spacing:-.01em}
+em{font-style:normal;color:var(--acc)}
+p{margin:0 0 12px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 max(4vw,16px)}
+.band{padding:clamp(56px,8vw,110px) 0;border-top:1px solid var(--line)}
+.eyebrow{display:flex;gap:10px;align-items:center;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--soft);margin-bottom:22px}
+.eyebrow b{color:var(--acc);font-weight:600}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:12px 22px;border-radius:999px;font:600 15px Inter,sans-serif;text-decoration:none;border:1px solid var(--acc);background:var(--acc);color:#1a1206;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn:hover{filter:brightness(1.08)}
+.arrow{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:50%;border:1px solid var(--acc);color:var(--acc);font-size:16px;flex:none}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--acc2);outline-offset:3px}
+/* nav */
+nav{position:sticky;top:0;z-index:20;background:rgba(8,23,51,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:24px;min-height:72px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;margin-right:auto}
+.mark{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#2f6fe4,#1748a8);display:grid;place-items:center;font:800 18px "Inter Tight",Inter,system-ui,sans-serif;color:#fff;position:relative}
+.mark::after{content:"";position:absolute;right:-3px;top:-3px;width:12px;height:12px;border-radius:3px;background:var(--acc)}
+.logo b{display:block;font:700 20px/1 "Inter Tight",Inter,system-ui,sans-serif;letter-spacing:.06em}
+.logo small{display:block;font-size:10.5px;letter-spacing:.28em;color:var(--soft);margin-top:4px}
+.links{display:flex;gap:22px;flex-wrap:wrap;font-size:15px}
+.links a{text-decoration:none;color:var(--soft)}.links a:hover{color:var(--ink)}
+.talk{display:flex;align-items:center;gap:12px;text-decoration:none;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+/* hero */
+.hero{padding:clamp(40px,6vw,80px) 0 clamp(56px,7vw,96px)}
+.crumbs{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:22px}
+.pill{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(110,160,255,.5);background:rgba(46,98,196,.25);border-radius:999px;padding:8px 16px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#cfe0ff;margin-bottom:26px}
+.pill i{width:8px;height:8px;border-radius:50%;background:var(--acc)}
+.hgrid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(28px,4vw,56px);align-items:end}
+.lead{font-size:clamp(17px,1.6vw,20px);color:var(--soft);max-width:58ch;margin-top:24px}
+.cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+.card{background:var(--glass);border:1px solid var(--line);border-radius:18px;backdrop-filter:blur(8px)}
+.expert{padding:24px}
+.who{display:flex;gap:16px;align-items:center}
+.avatar{width:72px;height:72px;border-radius:50%;flex:none;display:grid;place-items:center;font:700 26px "Inter Tight",Inter,system-ui,sans-serif;color:#1a1206;background:linear-gradient(135deg,var(--acc2),var(--acc))}
+.who b{display:block;font:600 20px/1.2 "Inter Tight",Inter,system-ui,sans-serif}
+.who span{font-size:14px;color:var(--soft)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}
+.tags span{font-size:13px;border:1px solid var(--line);border-radius:999px;padding:5px 12px;color:var(--soft)}
+.reframe{border-top:1px solid var(--line);padding-top:16px;display:grid;gap:10px;font-size:14px}
+.reframe small{display:block;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-bottom:2px}
+.reframe .after small{color:var(--acc)}
+.reframe .before p{color:var(--mute);text-decoration:line-through;text-decoration-color:rgba(242,153,74,.6);margin:0}
+.reframe .after p{margin:0}
+/* goals + ticker */
+.goals{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:46px}
+.goal{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 20px;text-decoration:none}
+.goal small{display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.goal b{font:600 18px "Inter Tight",Inter,system-ui,sans-serif}
+.ticker{overflow:hidden;border-block:1px solid var(--line);padding:16px 0;white-space:nowrap}
+.ticker div{display:inline-block;animation:run 40s linear infinite;font:600 clamp(20px,2.4vw,30px) "Inter Tight",Inter,system-ui,sans-serif;color:var(--soft)}
+.ticker span{margin:0 26px}.ticker i{color:var(--acc);font-style:normal}
+@keyframes run{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.ticker div{animation:none}html{scroll-behavior:auto}}
+/* sections */
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.8fr);gap:clamp(28px,5vw,70px);align-items:end;margin-bottom:40px}
+.split p{color:var(--soft);font-size:17px}
+.strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) 64px;margin-top:40px}
+.strip div{display:flex;gap:14px;align-items:center;padding:20px;border:1px solid var(--line);margin-left:-1px;background:rgba(14,38,82,.6);font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+.strip div b{color:var(--acc);font-weight:500}
+.strip div:last-child{justify-content:center;color:var(--acc);font-size:22px}
+.svc{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px}
+.svc .card{padding:26px;display:flex;flex-direction:column;gap:10px;position:relative;grid-column:span 2;min-height:300px}
+.svc .card.big{grid-column:span 3}
+.svc .num{font:700 72px/1 "Inter Tight",Inter,system-ui,sans-serif;color:rgba(140,175,235,.12);margin:6px 0 auto}
+.svc .lab{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.svc .card p{color:var(--soft);font-size:15px;margin:0}
+.price{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.price b{font:700 17px Inter;color:var(--ink);letter-spacing:0;text-transform:none}
+.go{display:inline-flex;gap:8px;align-items:center;font-size:13px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--ink)}
+.go i{color:var(--acc);font-style:normal}
+.svc .corner{position:absolute;top:22px;right:22px;width:38px;height:38px}
+.emp{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,70px);align-items:center}
+.emp ul{list-style:none;padding:0;margin:22px 0}
+.emp li{display:flex;justify-content:space-between;gap:12px;padding:16px 0;border-bottom:1px solid var(--line)}
+.emp li span{color:var(--soft)}
+.globe{aspect-ratio:1/.85;padding:20px;display:grid;place-items:center}
+.globe svg{width:100%;height:100%}
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.steps .card{padding:24px}
+.steps .card b{display:block;font:700 48px/1 "Inter Tight",Inter,system-ui,sans-serif;color:var(--acc);margin-bottom:18px}
+.steps p{color:var(--soft);font-size:15px;margin:8px 0 0}
+.meet{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(24px,4vw,56px)}
+.meet .card{padding:28px}
+.contact{display:grid;gap:10px;margin-top:18px;font-size:15px}
+.contact div{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding-bottom:10px}
+.contact span{color:var(--mute)}
+.wins{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.wins .card{padding:24px}
+.wins q{quotes:none;display:block;font:500 18px/1.5 "Inter Tight",Inter,system-ui,sans-serif;margin:10px 0 14px}
+.wins small{color:var(--mute);font-size:13px}
+.wins .k{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--acc)}
+.faq{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:clamp(24px,4vw,56px)}
+details{border-bottom:1px solid var(--line);padding:18px 0}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;font:600 18px "Inter Tight",Inter,system-ui,sans-serif}
+summary::after{content:"+";color:var(--acc);font-size:24px;line-height:1}
+details[open] summary::after{content:"–"}
+details p{color:var(--soft);margin:10px 0 0}
+.final{text-align:center}
+.final .cta{justify-content:center}
+footer{border-top:1px solid var(--line);padding:40px 0;color:var(--mute);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px 40px;justify-content:space-between}
+footer b{color:var(--ink)}
+.note{font-size:13px;color:var(--mute);margin-top:14px}
+@media(max-width:980px){.links{display:none}.hgrid,.split,.emp,.meet,.faq{grid-template-columns:minmax(0,1fr)}.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.svc .card,.svc .card.big{grid-column:span 3}.wins{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:640px){.goals,.steps{grid-template-columns:minmax(0,1fr)}.strip{grid-template-columns:minmax(0,1fr)}.strip div{margin-left:0;margin-top:-1px}.svc{grid-template-columns:minmax(0,1fr)}.svc .card,.svc .card.big{grid-column:auto;min-height:0}.talk span{display:none}}
+
+.links a.on{color:var(--ink)}
+.chip{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--soft);text-decoration:none}
+.chip i{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font:700 10px Inter;color:#1a1206;background:linear-gradient(135deg,var(--acc2),var(--acc));font-style:normal}
+.bc{display:flex;gap:10px;flex-wrap:wrap;font-size:13px;color:var(--mute);margin-bottom:26px}
+.bc a{color:var(--soft);text-decoration:none}.bc a:hover{color:var(--ink)}
+.page{padding:clamp(40px,6vw,80px) 0}
+.dhead{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(28px,5vw,64px);align-items:start}
+.paybox{padding:26px}
+.paybox .big{font:700 clamp(40px,5vw,56px)/1 "Inter Tight",Inter,system-ui,sans-serif;margin:8px 0 6px}
+.paybox .big small{font:500 16px Inter;color:var(--soft)}
+.paybox .btn{width:100%;justify-content:center;margin-top:16px}
+.methods{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.methods span{font-size:12.5px;border:1px solid var(--line);border-radius:8px;padding:5px 10px;color:var(--soft);background:rgba(8,23,51,.5)}
+.secure{display:flex;gap:8px;align-items:center;font-size:13px;color:var(--mute);margin-top:12px}
+.list{list-style:none;padding:0;margin:18px 0 0}
+.list li{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);color:var(--soft)}
+.list li::before{content:"✳";color:var(--acc)}
+.aft{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:26px}
+.aft .card{padding:22px}
+.aft b{display:block;font:700 34px/1 "Inter Tight",Inter,system-ui,sans-serif;color:var(--acc);margin-bottom:12px}
+.aft p{color:var(--soft);font-size:15px;margin:6px 0 0}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{text-align:left;padding:16px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);font-weight:500}
+td.p{white-space:nowrap;font-weight:600}
+.scroll{overflow-x:auto}
+.team{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px}
+.team a{padding:22px;text-decoration:none;display:flex;flex-direction:column;gap:14px}
+.team .avatar{width:64px;height:64px;font-size:22px}
+.team b{font:600 20px "Inter Tight",Inter,system-ui,sans-serif}
+.team span{color:var(--soft);font-size:14px}
+.form{display:grid;gap:16px;padding:26px}
+.form label{display:grid;gap:8px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--soft)}
+.form input,.form select,.form textarea{font:16px Inter,sans-serif;padding:13px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(8,23,51,.7);color:var(--ink);width:100%;min-height:48px}
+.form textarea{min-height:120px;resize:vertical}
+.form .row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.msg{font-size:14px;color:var(--acc2);min-height:20px}
+.note-body{max-width:72ch;font-size:17px;color:var(--soft)}
+.note-body h3{color:var(--ink);margin:28px 0 10px}
+.res{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.res a{padding:24px;text-decoration:none;display:flex;flex-direction:column;gap:10px}
+.res a p{color:var(--soft);font-size:15px;margin:0}
+.res .k{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--acc)}
+.res .go{margin-top:auto}
+@media(max-width:980px){.dhead{grid-template-columns:minmax(0,1fr)}.res,.aft{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:640px){.form .row{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="logo" href="#home"><span class="mark">MG</span><span><b>MOREGROW</b><small>CAREER PARTNERS</small></span></a>
+  <div class="links"><a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#employers">For employers</a><a href="#approach">Our approach</a><a href="#team">Our team</a><a href="#resources">Resources</a></div>
+  <span id="xchip"></span>
+  <a class="talk" href="#contact"><span>Let's talk</span><span class="arrow">↗</span></a>
+</div></nav>
+<main id="app"></main>
+<footer><div class="wrap">
+  <div><b>MoreGrow Career Partners</b><br>Your career, moving forward.</div>
+  <div style="display:flex;gap:18px;flex-wrap:wrap"><a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#payment">Payment</a><a href="#employers">Employers</a><a href="#team">Team</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></div>
+  <div>Part of MoreGrow Global · moregrowglobalsearch.com</div>
+</div></footer>
+<script>
+{
+// ===== Edit people and services here =====
+// Each expert's personal site = this page's address + #their-key (e.g. #paige-cox).
+const EXPERTS = {
+  main: {name: 'MoreGrow Career Partners', title: 'Career experts', tags: ['Resumes', 'LinkedIn', 'Career strategy', 'Reverse recruiting'], email: 'jamal@moregrowglobalsearch.com', whatsapp: '', bio: ''},
+  abdulazeez: {name: 'Abdulazeez Jamaldeen', title: 'Founder · CPRW · CMRW · PHR · TAS', tags: ['Executive resumes', 'LinkedIn', 'Reverse recruiting', 'Global markets'], email: 'jamal@moregrowglobalsearch.com', whatsapp: '', bio: 'Abdulazeez founded MoreGrow and leads its team of writers and recruiters, helping professionals and executives get found, understood and introduced to the people who hire.'},
+  matthew: {name: 'Matthew', title: 'Career Expert', tags: ['Resumes', 'LinkedIn', 'Job search strategy'], email: 'jamal@moregrowglobalsearch.com', whatsapp: '', bio: ''},
+  precious: {name: 'Precious', title: 'Career Expert', tags: ['Resumes', 'LinkedIn', 'Job search strategy'], email: 'jamal@moregrowglobalsearch.com', whatsapp: '', bio: ''},
+  'paige-cox': {name: 'Paige Cox', title: 'Career Expert', tags: ['Resumes', 'LinkedIn', 'Job search strategy'], email: 'jamal@moregrowglobalsearch.com', whatsapp: '', bio: ''},
+  'linda-james': {name: 'Linda James', title: 'Career Expert', tags: ['Resumes', 'LinkedIn', 'Job search strategy'], email: 'jamal@moregrowglobalsearch.com', whatsapp: '', bio: ''}
+};
+const SERVICES = [
+  {key: 'svc-audit', n: '01', lab: 'Start here', name: 'Career Positioning Audit', short: 'An expert review of your resume, LinkedIn and search strategy, with a prioritised fix list.', price: '$99', unit: 'one-time', time: '3 business days', inc: ['Expert review of your resume', 'Review of your LinkedIn profile', 'Review of your job search strategy', 'A prioritised list of fixes to make first'], who: 'Anyone whose applications are going silent and wants to know exactly why before spending more.', pay: 'https://buy.stripe.com/dRm9AU4B1fOH4lB62Ye7m01', via: 'stripe'},
+  {key: 'svc-brand', n: '02', lab: 'Done for you', name: 'Professional Brand Transformation', short: 'Your resume, cover letter and LinkedIn rewritten around the results you have delivered.', price: '$295', unit: 'one-time', time: '5–7 business days · 1 revision round', inc: ['Discovery questionnaire and review', 'Rewritten, ATS-readable resume', 'Tailored cover letter template', 'Full LinkedIn profile rewrite', 'One revision round'], who: 'Mid-career and senior professionals who want documents that match their real level.', pay: 'https://buy.stripe.com/9B69AUd7xaun7xNbnie7m00', via: 'stripe'},
+  {key: 'svc-executive', n: '03', lab: 'Senior leaders', name: 'Executive Career Transformation', short: 'Executive positioning, documents and a strategy consultation for leadership roles.', price: '$495', unit: 'one-time', time: '7–10 business days · 2 revision rounds', inc: ['Full executive positioning', 'Executive resume and cover letter', 'Executive LinkedIn profile', 'Career strategy consultation', 'Two revision rounds'], who: 'Directors, VPs and C-suite leaders preparing for their next senior move.', pay: 'https://buy.stripe.com/eVq9AUd7xgSLf0f62Ye7m02', via: 'stripe'},
+  {key: 'svc-reverse', n: '04', lab: 'Search for you', name: 'Strategic Reverse Recruiting', short: 'Targeted outreach to decision-makers on your behalf, with weekly reporting.', price: '$600', unit: 'per month', time: 'Monthly agreement · weekly reports', inc: ['Target company and role list agreed with you', 'Outreach to decision-makers on your behalf', 'Weekly report of activity and responses', 'Ongoing positioning adjustments'], who: 'Busy professionals who want an expert running their search. No guarantee of interviews or offers.', pay: 'https://buy.stripe.com/3cIcN62sTbyr5pF772e7m03', via: 'stripe'},
+  {key: 'svc-playbook', n: '05', lab: 'Do it yourself', name: 'Why Your Applications Go Silent', short: 'The 30-page playbook: diagnostic, LinkedIn audit, scripts and a 30-day plan.', price: '$11', unit: 'instant PDF', time: 'Instant download', inc: ['20-point Silent Application Diagnostic', '25-point LinkedIn audit', '8 outreach and negotiation scripts', '30-day recovery plan'], who: 'Job seekers who want to fix things themselves first.', pay: 'https://selar.com/34h77479i1?currency=USD', via: 'selar'},
+  {key: 'svc-plan', n: '06', lab: 'For freelancers', name: 'The 9-Square Marketing Plan', short: 'A 5-page visual plan to find, win and keep clients in any niche.', price: '$3', unit: 'instant PDF', time: 'Instant download', inc: ['The 9-square marketing map', 'Ready-made 14-day follow-up', '1-page plan template', '30-day checklist'], who: 'Coaches, freelancers and small businesses who want clients without random posting.', pay: 'https://selar.com/3t2n63bbcn?currency=USD', via: 'selar'}
+];
+const NOTES = [
+  {key: 'note-bullets', t: 'Turn duties into results', min: 4, body: '<p>Most resumes list what a job required, not what the person achieved. Recruiters skim for proof.</p><h3>Use the result formula</h3><p>Action + what you changed + the measurable result + the timeframe. "Managed the team" becomes "Led a 12-person team that cut processing time by 30% in six months."</p><h3>No numbers? Use scale and scope</h3><p>Budget size, number of clients, regions covered, or the before-and-after of a process all show impact.</p>'},
+  {key: 'note-linkedin', t: 'Your LinkedIn first impression', min: 3, body: '<p>Recruiters search LinkedIn by job title and skills, then decide in seconds whether to click.</p><h3>Headline</h3><p>Write the role you want, your specialism and one proof point, not "Seeking opportunities".</p><h3>About section</h3><p>Open with who you help and the results you deliver, then three short proof points and how to reach you.</p><h3>Open to Work</h3><p>Turn it on for recruiters only if you are employed, with your exact target titles and locations.</p>'},
+  {key: 'note-search', t: 'Search with intention', min: 5, body: '<p>Sending more applications rarely fixes silence. Most hires still come through people.</p><h3>Pick 20 target companies</h3><p>Choose companies that hire your role in your target country, and track them in one list.</p><h3>One human per application</h3><p>For every application, contact one person inside that company: the hiring manager, a team member or a recruiter.</p><h3>Follow up once, kindly</h3><p>A short follow-up after five working days is professional, not pushy.</p>'}
+];
+const FAQ = [
+  ['Do you guarantee interviews or a job?', 'No. Nobody honest can. We remove the reasons you are being overlooked and put your experience in front of the right people.'],
+  ['Which service should I start with?', 'If you are unsure, start with the $99 Career Positioning Audit. You get a prioritised fix list and can upgrade after.'],
+  ['How do I pay?', 'Open any service and press Pay now. You pay by card through a secure Stripe checkout in USD, then you send your resume and details. Digital guides are bought on Selar.'],
+  ['Can I pay by invoice or bank transfer?', 'Yes, for larger engagements. Use the contact page to request an invoice and your expert will send payment details.'],
+  ['I am changing careers. Can you help?', 'Yes. We find the skills and results that carry over and position them for your new target role.'],
+  ['Will my resume work with applicant tracking systems?', 'Yes. Every resume is written in a clean, ATS-readable format and matched to the language of your target roles.'],
+  ['Do you help people applying from abroad?', 'Yes. We position you for the market you are targeting, including local CV norms in the US, UK, Canada, Europe, Australia and the Gulf.'],
+  ['I am an employer. How do we start?', 'Use the contact page or email info@moregrowglobalsearch.com with the role, location and timeline. We reply with an approach and proposal.']
+];
+// ===== End of editable data =====
+
+const $ = id => document.getElementById(id);
+const app = $('app');
+const ini = n => n.split(/\s+/).map(w => w[0]).join('').slice(0, 2).toUpperCase();
+let ex = 'main';
+try { const s = sessionStorage.getItem('mg-expert'); if (s && EXPERTS[s]) ex = s; } catch (e) {}
+const E = () => EXPERTS[ex];
+const first = () => (ex === 'main' ? 'your expert' : E().name.split(' ')[0]);
+const arrow = '<span class="arrow">↗</span>';
+const eb = (n, t) => `<div class="eyebrow"><b>✳</b>${n ? n + ' / ' : ''}${t}</div>`;
+const bc = (...p) => `<div class="bc"><a href="#home">Home</a>${p.map(x => ' / ' + x).join('')}</div>`;
+const METHODS = '<div class="methods"><span>Visa</span><span>Mastercard</span><span>American Express</span><span>+ wallets shown at checkout</span></div>';
+const payBtn = s => s.via === 'stripe'
+  ? `<a class="btn" href="${s.pay}" rel="noopener">${s.unit === 'per month' ? 'Start now' : 'Pay now'} · ${s.price}${s.unit === 'per month' ? '/month' : ''} ↗</a>${METHODS}<div class="secure">🔒 Secure card checkout by Stripe · prices in USD</div>`
+  : `<a class="btn" href="${s.pay}" rel="noopener">Buy now · ${s.price} ↗</a><div class="methods"><span>Card</span><span>Bank transfer</span><span>Local options at checkout</span></div><div class="secure">🔒 Secure checkout by Selar · switch currency at checkout</div>`;
+const svcCard = (s, big) => `<a class="card${big ? ' big' : ''}" href="#${s.key}" style="text-decoration:none"><span class="lab">${s.n} / ${s.lab}</span><span class="num">${s.n}</span><h3>${s.name}</h3><p>${s.short}</p><span class="price">From <b>${s.price} USD</b> ${s.unit === 'per month' ? '/ month' : ''}</span><span class="go">Explore service <i>↗</i></span></a>`;
+const expertCard = () => `<div class="who"><div class="avatar">${ini(E().name)}</div><div><span style="font-size:14px;color:var(--soft)">Your expert</span><b>${E().name}</b><span style="font-size:14px;color:var(--soft);display:block">${E().title}</span></div></div>`;
+const gmail = (to, su, body) => `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(to)}&su=${encodeURIComponent(su)}&body=${encodeURIComponent(body)}`;
+
+const V = {};
+V.home = () => `
+<header class="hero"><div class="wrap">
+  <div class="crumbs"><span>MoreGrow / Career Partners</span><span>Careers · People · Growth</span></div>
+  <div class="hgrid">
+    <div><div class="pill"><i></i>Expert-led. Honest. Global.</div>
+      <h1>Get seen for the work you've already <em>done.</em></h1>
+      <p class="lead">Resumes, LinkedIn, job search strategy and reverse recruiting for professionals targeting the US, UK, Canada, Europe, Australia and the Gulf, plus hiring support for employers.</p>
+      <div class="cta"><a class="btn" href="#services">Explore our services ↗</a><a class="btn ghost" href="#employers">For employers →</a></div></div>
+    <aside class="card expert">${expertCard()}<div class="tags">${E().tags.map(t => `<span>${t}</span>`).join('')}</div>
+      <div class="reframe"><div class="before"><small>Before</small><p>Responsible for managing the operations team.</p></div><div class="after"><small>After</small><p>Led a [size] operations team and rebuilt reporting, cutting [problem] by [result].</p></div></div>
+      <p class="note" style="margin-bottom:0">An illustrative rewrite. Yours uses your real numbers.</p></aside>
+  </div>
+  <div class="goals">
+    <a class="card goal" href="#svc-brand"><div><small>I want to</small><b>Fix my resume</b></div>${arrow}</a>
+    <a class="card goal" href="#svc-reverse"><div><small>I want to</small><b>Find my next role</b></div>${arrow}</a>
+    <a class="card goal" href="#employers"><div><small>I want to</small><b>Build my team</b></div>${arrow}</a>
+  </div>
+</div></header>
+<div class="ticker" aria-hidden="true"><div>${('<span>Resume writing</span><i>✳</i><span>LinkedIn optimisation</span><i>✳</i><span>Career strategy</span><i>✳</i><span>Reverse recruiting</span><i>✳</i><span>Executive search</span><i>✳</i>').repeat(2)}</div></div>
+<section class="band"><div class="wrap">${eb('01', 'A sharper perspective')}
+  <div class="split"><h2>Your experience is bigger than your <em>resume.</em></h2><div><p>Most strong candidates aren't rejected. They're overlooked. We turn your results into a story recruiters understand in seconds, and help you get it in front of them.</p><a class="go" href="#approach">A little more about us <i>↗</i></a></div></div>
+  <div class="strip"><div><b>01</b>Personal, never templated</div><div><b>02</b>Built on your real results</div><div><b>03</b>Made for global markets</div><div>✳</div></div>
+</div></section>
+<section class="band"><div class="wrap">${eb('02', 'For professionals')}
+  <div class="split"><h2>The right tools for your <em>next move.</em></h2><div><p>Pick the level of support you need, then pay securely by card in a few clicks.</p><a class="go" href="#services">Explore all services <i>↗</i></a></div></div>
+  <div class="svc">${SERVICES.slice(0, 5).map((s, i) => svcCard(s, i < 2)).join('')}</div>
+</div></section>
+${resultsBand('03')}
+<section class="band final"><div class="wrap"><h2>Ready to move <em>forward?</em></h2><p class="lead" style="margin:20px auto 0">Tell ${first()} where you are and where you want to go next.</p><div class="cta"><a class="btn" href="#contact">Let's talk about it ↗</a><a class="btn ghost" href="#pricing">See pricing</a></div></div></section>`;
+
+function resultsBand(n) { return `<section class="band"><div class="wrap">${eb(n, 'Client results')}
+  <div class="split"><h2>Real messages from <em>real clients.</em></h2><div><p>Shown without names or companies to protect their privacy. Results vary; no outcome is guaranteed.</p></div></div>
+  <div class="wins"><div class="card"><span class="k">Finance · Offer the same day</span><q>The turnaround was very quick. I had an interview and then a few hours later they offered me the role.</q><small>Controller, real estate · July 2026</small></div>
+  <div class="card"><span class="k">Interview on the spot</span><q>The moment you helped me with my resume I was offered an interview/opportunities on the spot.</q><small>Funeral service professional · June 2026</small></div>
+  <div class="card"><span class="k">Start date confirmed</span><q>It has been confirmed that my first day with [telecom company] will be Monday, June 8th.</q><small>Telecom professional, USA · May 2026</small></div></div>
+</div></section>`; }
+
+V.services = () => `<section class="page"><div class="wrap">${bc('Services')}${eb('', 'For professionals')}
+  <div class="split"><h2>Services for every stage of your <em>search.</em></h2><div><p>Open any service to see what's included, then pay securely to get started.</p></div></div>
+  <div class="svc">${SERVICES.map((s, i) => svcCard(s, i < 2)).join('')}</div>
+  <div class="split" style="margin-top:56px"><h3 style="font-size:28px">Hiring for your team?</h3><div><a class="btn ghost" href="#employers">See employer services →</a></div></div>
+</div></section>`;
+
+function svcView(s) {
+  const others = SERVICES.filter(x => x !== s).slice(0, 3);
+  return `<section class="page"><div class="wrap">${bc('<a href="#services">Services</a>', s.name)}
+  <div class="dhead">
+    <div>${eb(s.n, s.lab)}<h2>${s.name}<em>.</em></h2><p class="lead">${s.short}</p>
+      <ul class="list">${s.inc.map(x => `<li>${x}</li>`).join('')}</ul>
+      <p class="note" style="font-size:15px;margin-top:20px"><b style="color:var(--ink)">Who it's for:</b> ${s.who}</p></div>
+    <aside class="card paybox"><span class="lab" style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)">${s.time}</span>
+      <div class="big">${s.price} <small>USD ${s.unit}</small></div>${payBtn(s)}
+      <a class="btn ghost" href="#contact" style="margin-top:10px">Ask ${first()} a question first</a></aside>
+  </div>
+  ${s.via === 'stripe' ? `<div style="margin-top:56px">${eb('', 'After you pay')}<div class="aft">
+    <div class="card"><b>01</b><h3>Instant receipt</h3><p>Stripe emails your receipt, and your expert is notified straight away.</p></div>
+    <div class="card"><b>02</b><h3>Send your details</h3><p>You go to a short form for your resume, LinkedIn, target role and country.</p></div>
+    <div class="card"><b>03</b><h3>Work begins</h3><p>${first() === 'your expert' ? 'Your expert' : first()} starts within your package's turnaround time.</p></div></div></div>` : ''}
+  <div style="margin-top:56px">${eb('', 'Keep exploring')}<div class="svc">${others.map(x => svcCard(x)).join('')}</div></div>
+</div></section>`;
+}
+SERVICES.forEach(s => V[s.key] = () => svcView(s));
+
+V.pricing = () => `<section class="page"><div class="wrap">${bc('Pricing')}${eb('', 'Pricing')}
+  <div class="split"><h2>Clear prices. <em>Pay in minutes.</em></h2><div><p>All prices in USD. Card payments are processed securely by Stripe; digital guides by Selar.</p></div></div>
+  <div class="card scroll" style="padding:8px 18px"><table><thead><tr><th>Service</th><th>Includes</th><th>Turnaround</th><th>Price</th><th></th></tr></thead><tbody>
+  ${SERVICES.map(s => `<tr><td><a href="#${s.key}" style="font-weight:600;text-decoration:none">${s.name}</a></td><td style="color:var(--soft)">${s.inc.slice(0, 2).join(', ')}…</td><td style="color:var(--soft)">${s.time}</td><td class="p">${s.price}${s.unit === 'per month' ? '/mo' : ''}</td><td><a class="go" href="${s.pay}" rel="noopener">${s.via === 'stripe' ? 'Pay' : 'Buy'} <i>↗</i></a></td></tr>`).join('')}
+  </tbody></table></div>
+  <p class="note">Prefer an invoice or bank transfer for a larger engagement? <a href="#contact">Request one here</a>.</p>
+  <div style="margin-top:56px"><a class="btn ghost" href="#payment">How payment works →</a></div>
+</div></section>`;
+
+V.payment = () => `<section class="page"><div class="wrap">${bc('Payment')}${eb('', 'Payment methods')}
+  <div class="split"><h2>Simple, secure <em>payment.</em></h2><div><p>Choose a service, pay, and send your details. That's it.</p></div></div>
+  <div class="aft" style="margin-top:0">
+    <div class="card"><b>💳</b><h3>Card · Stripe</h3><p>Visa, Mastercard and American Express, plus any wallets Stripe offers on your device. Charged in USD with an instant receipt.</p>${METHODS}</div>
+    <div class="card"><b>🧾</b><h3>Invoice or transfer</h3><p>For larger or monthly engagements, request an invoice and ${first()} will send payment details.</p><a class="go" href="#contact" style="margin-top:14px">Request an invoice <i>↗</i></a></div>
+    <div class="card"><b>📘</b><h3>Selar · guides</h3><p>Digital guides check out on Selar, with card, bank transfer and local options. Switch currency at checkout.</p><a class="go" href="#svc-playbook" style="margin-top:14px">See guides <i>↗</i></a></div>
+  </div>
+  <div style="margin-top:56px">${eb('', 'Pay for a service')}<div class="card scroll" style="padding:8px 18px"><table><tbody>${SERVICES.map(s => `<tr><td style="font-weight:600">${s.name}</td><td class="p">${s.price}${s.unit === 'per month' ? '/mo' : ''}</td><td><a class="btn" href="${s.pay}" rel="noopener" style="min-height:40px;padding:8px 16px">${s.via === 'stripe' ? 'Pay now' : 'Buy now'} ↗</a></td></tr>`).join('')}</tbody></table></div></div>
+</div></section>`;
+
+V.employers = () => `<section class="page"><div class="wrap">${bc('For employers')}<div class="emp">
+  <div>${eb('', 'For employers')}<h2>Great teams start with the right <em>search.</em></h2>
+    <p class="lead">Through MoreGrow Global Search, we help organisations find the professionals they need, from key hires to senior leadership.</p>
+    <ul><li><b>Recruitment</b><span>Sourcing and shortlisting</span></li><li><b>Talent acquisition</b><span>Pipelines for repeat roles</span></li><li><b>Executive search</b><span>Discreet senior search</span></li></ul>
+    <a class="btn" href="#contact">Discuss your hiring needs ↗</a><p class="note">Or email info@moregrowglobalsearch.com · Pricing depends on role and scope; we send a proposal and invoice.</p></div>
+  <div class="card globe" aria-hidden="true">${GLOBE}</div>
+</div></div></section>`;
+
+V.approach = () => `<section class="page"><div class="wrap">${bc('Our approach')}${eb('', 'The way we work')}
+  <div class="split"><h2>Four steps to being <em>found.</em></h2><div><p>Documents alone don't get people hired. Being found, understood and introduced does.</p></div></div>
+  <div class="steps"><div class="card"><b>01</b><h3>Visibility</h3><p>Recruiters and hiring managers can find you where they actually look.</p></div><div class="card"><b>02</b><h3>Positioning</h3><p>Your value is obvious in seconds, written around results, not duties.</p></div><div class="card"><b>03</b><h3>Access</h3><p>You reach decision-makers directly instead of waiting in the pile.</p></div><div class="card"><b>04</b><h3>Opportunity</h3><p>Conversations turn into interviews and offers.</p></div></div>
+  <div class="strip"><div><b>01</b>Personal, never templated</div><div><b>02</b>Built on your real results</div><div><b>03</b>Made for global markets</div><div>✳</div></div>
+</div></section>${resultsBand('')}`;
+
+V.team = () => `<section class="page"><div class="wrap">${bc('Our team')}${eb('', 'Our team')}
+  <div class="split"><h2>Experts who know your <em>market.</em></h2><div><p>Every client works directly with one MoreGrow Career Partners expert. Open a profile to work with them.</p></div></div>
+  <div class="team">${Object.entries(EXPERTS).filter(([k]) => k !== 'main').map(([k, e]) => `<a class="card" href="#${k}"><div class="avatar">${ini(e.name)}</div><div><b>${e.name}</b><br><span>${e.title}</span></div><div class="tags" style="margin:0">${e.tags.map(t => `<span>${t}</span>`).join('')}</div><span class="go">View profile <i>↗</i></span></a>`).join('')}</div>
+</div></section>`;
+
+V.resources = () => `<section class="page"><div class="wrap">${bc('Resources')}${eb('', 'Resources')}
+  <div class="split"><h2>Notes for your next <em>move.</em></h2><div><p>Short, practical reads, plus guides you can use today.</p></div></div>
+  <div class="res">${NOTES.map(n => `<a class="card" href="#${n.key}"><span class="k">Career note · ${n.min} min read</span><h3>${n.t}</h3><span class="go">Read <i>↗</i></span></a>`).join('')}</div>
+  <div class="res" style="margin-top:16px">${SERVICES.filter(s => s.via === 'selar').map(s => `<a class="card" href="#${s.key}"><span class="k">Guide · ${s.price}</span><h3>${s.name}</h3><p>${s.short}</p><span class="go">Get it <i>↗</i></span></a>`).join('')}<a class="card" href="https://substack.com/@moregrow" rel="noopener"><span class="k">Newsletter · free</span><h3>The MoreGrow newsletter</h3><p>Career and hiring insights on Substack.</p><span class="go">Read on Substack <i>↗</i></span></a></div>
+</div></section>`;
+NOTES.forEach(n => V[n.key] = () => `<section class="page"><div class="wrap">${bc('<a href="#resources">Resources</a>', n.t)}${eb('', `Career note · ${n.min} min read`)}<h2 style="margin-bottom:26px">${n.t}<em>.</em></h2><div class="note-body">${n.body}</div><div class="cta"><a class="btn" href="#svc-audit">Get an expert audit ↗</a><a class="btn ghost" href="#resources">All resources</a></div></div></section>`);
+
+V.faq = () => `<section class="page"><div class="wrap faq"><div>${bc('FAQ')}${eb('', 'FAQ')}<h2>Good <em>questions.</em></h2></div><div>${FAQ.map(([q, a]) => `<details><summary>${q}</summary><p>${a}</p></details>`).join('')}</div></div></section>`;
+
+V.contact = () => `<section class="page"><div class="wrap">${bc('Contact')}<div class="dhead">
+  <div>${eb('', "Let's make something move")}<h2>Let's talk about what's <em>next.</em></h2><p class="lead">Tell ${first()} about your goals or hiring needs. Your message opens as an email draft for you to send.</p>
+    <div class="card" style="padding:22px;margin-top:26px">${expertCard()}<div class="contact"><div><span>Email</span><b>${E().email}</b></div>${E().whatsapp ? `<div><span>WhatsApp</span><b>${E().whatsapp}</b></div>` : ''}<div><span>Employers</span><b>info@moregrowglobalsearch.com</b></div></div></div></div>
+  <form class="card form" id="cf">
+    <div class="row"><label>Your name *<input id="f-name" required autocomplete="name"></label><label>Email address *<input id="f-email" type="email" required autocomplete="email"></label></div>
+    <label>What can we help with?<select id="f-what"><option>I'm not sure yet</option>${SERVICES.map(s => `<option>${s.name}</option>`).join('')}<option>Invoice or bank transfer request</option><option>Hiring support (employer)</option></select></label>
+    <label>Your career level (optional)<select id="f-level"><option>Prefer not to say</option><option>Mid-level</option><option>Senior</option><option>Director</option><option>VP / C-suite</option></select></label>
+    <label>What's on your mind? (optional)<textarea id="f-msg"></textarea></label>
+    <div class="cta" style="margin-top:0"><button class="btn" type="submit">Open email draft ↗</button><button class="btn ghost" type="button" id="f-copy">Copy message</button></div>
+    <p class="msg" id="f-out" role="status"></p>
+    <p class="note" style="margin:0">Nothing is sent automatically. Your draft opens in Gmail; review it and press Send.</p>
+  </form>
+</div></div></section>`;
+
+const GLOBE = `<svg viewBox="0 0 400 340"><defs><radialGradient id="g" cx="50%" cy="45%"><stop offset="0" stop-color="#2f6fe4" stop-opacity=".55"/><stop offset="1" stop-color="#2f6fe4" stop-opacity="0"/></radialGradient></defs><circle cx="200" cy="170" r="150" fill="url(#g)"/><circle cx="200" cy="170" r="140" fill="none" stroke="#8cafeb" stroke-opacity=".35"/><ellipse cx="200" cy="170" rx="60" ry="140" fill="none" stroke="#8cafeb" stroke-opacity=".2"/><ellipse cx="200" cy="170" rx="110" ry="140" fill="none" stroke="#8cafeb" stroke-opacity=".2"/><line x1="60" y1="170" x2="340" y2="170" stroke="#8cafeb" stroke-opacity=".2"/><g fill="none" stroke="#f2994a" stroke-width="1.6" stroke-dasharray="3 5"><path d="M200 180 Q150 90 115 110"/><path d="M200 180 Q190 80 190 92"/><path d="M200 180 Q250 90 232 100"/><path d="M200 180 Q280 140 290 168"/><path d="M200 180 Q300 230 300 250"/><path d="M200 180 Q140 160 120 160"/></g><g fill="#f2994a"><circle cx="115" cy="110" r="5"/><circle cx="190" cy="92" r="5"/><circle cx="232" cy="100" r="5"/><circle cx="290" cy="168" r="5"/><circle cx="300" cy="250" r="5"/><circle cx="120" cy="160" r="5"/></g><circle cx="200" cy="180" r="8" fill="#fff"/><g fill="#eef3ff" font-family="Inter" font-size="12" font-weight="600"><text x="72" y="104">Canada</text><text x="176" y="82">UK</text><text x="240" y="96">Germany</text><text x="298" y="166">UAE</text><text x="268" y="270">Australia</text><text x="82" y="178">USA</text></g></svg>`;
+
+function bindContact() {
+  const f = $('cf'); if (!f) return;
+  const build = () => {
+    const sel = $('f-what').value;
+    const to = sel === 'Hiring support (employer)' ? 'info@moregrowglobalsearch.com' : E().email;
+    const su = `CAREER: ${sel}${ex !== 'main' ? ' (for ' + E().name + ')' : ''}`;
+    const body = `Hi ${ex === 'main' ? 'MoreGrow team' : E().name.split(' ')[0]},\n\nName: ${$('f-name').value}\nEmail: ${$('f-email').value}\nInterested in: ${sel}\nCareer level: ${$('f-level').value}\n\n${$('f-msg').value}\n\nThanks,\n${$('f-name').value}`;
+    return {to, su, body};
+  };
+  f.addEventListener('submit', e => {
+    e.preventDefault();
+    if (!f.reportValidity()) return;
+    const m = build();
+    const a = document.createElement('a'); a.href = gmail(m.to, m.su, m.body); a.target = '_blank'; a.rel = 'noopener'; document.body.appendChild(a); a.click(); a.remove();
+    $('f-out').textContent = `Your draft to ${m.to} is ready in Gmail. If it didn't open, use Copy message and email ${m.to}.`;
+  });
+  $('f-copy').addEventListener('click', async () => {
+    const m = build();
+    try { await navigator.clipboard.writeText(`To: ${m.to}\nSubject: ${m.su}\n\n${m.body}`); $('f-out').textContent = `Copied. Paste it into an email to ${m.to}.`; }
+    catch (e) { $('f-out').textContent = `Copy was blocked. Please email ${m.to} directly.`; }
+  });
+}
+
+const NAV = {services: 'services', pricing: 'pricing', employers: 'employers', approach: 'approach', team: 'team', resources: 'resources'};
+function route() {
+  let key = location.hash.slice(1) || 'home';
+  if (EXPERTS[key]) { ex = key; try { sessionStorage.setItem('mg-expert', key); } catch (e) {} key = 'home'; }
+  const view = V[key] || V.home;
+  app.innerHTML = view();
+  bindContact();
+  $('xchip').innerHTML = ex === 'main' ? '' : `<a class="chip" href="#contact"><i>${ini(E().name)}</i>${E().name}</a>`;
+  const top = key.startsWith('svc-') ? 'services' : key.startsWith('note-') ? 'resources' : key;
+  document.querySelectorAll('.links a').forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + top));
+  const s = SERVICES.find(x => x.key === key);
+  document.title = (s ? s.name + ' · ' : key !== 'home' && V[key] ? key[0].toUpperCase() + key.slice(1) + ' · ' : '') + (ex === 'main' ? 'MoreGrow Career Partners' : E().name + ' · MoreGrow Career Partners');
+  window.scrollTo(0, 0);
+}
+addEventListener('hashchange', route);
+route();
+}
+
+</script>
+</body>
+</html>
