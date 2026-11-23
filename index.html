@@ -174,6 +174,13 @@ td.p{white-space:nowrap;font-weight:600}
 .res a p{color:var(--soft);font-size:15px;margin:0}
 .res .k{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--acc)}
 .res .go{margin-top:auto}
+.tiers{padding:22px 26px}
+.tiers .th{display:flex;justify-content:space-between;gap:12px;font-size:13px;letter-spacing:.06em;color:var(--soft);padding-bottom:10px}
+.tiers .th span:last-child{letter-spacing:.12em;text-transform:uppercase;font-size:12px}
+.tiers a{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:20px 0;border-bottom:1px solid var(--line);text-decoration:none;font-size:clamp(18px,2vw,21px)}
+.tiers a:last-of-type{border-bottom:0}
+.tiers a b{font-weight:700;white-space:nowrap}.tiers a i{font-style:normal;color:var(--acc);font-size:15px;margin-left:10px}
+.tiers a:hover b{color:var(--acc2)}
 @media(max-width:980px){.dhead{grid-template-columns:minmax(0,1fr)}.res,.aft{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:640px){.form .row{grid-template-columns:minmax(0,1fr)}}
 </style>
@@ -205,7 +212,7 @@ const EXPERTS = {
 };
 const SERVICES = [
   {key: 'svc-audit', n: '01', lab: 'Start here', name: 'Career Positioning Audit', short: 'An expert review of your resume, LinkedIn and search strategy, with a prioritised fix list.', price: '$99', unit: 'one-time', time: '3 business days', inc: ['Expert review of your resume', 'Review of your LinkedIn profile', 'Review of your job search strategy', 'A prioritised list of fixes to make first'], who: 'Anyone whose applications are going silent and wants to know exactly why before spending more.', pay: 'https://buy.stripe.com/dRm9AU4B1fOH4lB62Ye7m01', via: 'stripe'},
-  {key: 'svc-brand', n: '02', lab: 'Done for you', name: 'Professional Brand Transformation', short: 'Your resume, cover letter and LinkedIn rewritten around the results you have delivered.', price: '$295', unit: 'one-time', time: '5–7 business days · 1 revision round', inc: ['Discovery questionnaire and review', 'Rewritten, ATS-readable resume', 'Tailored cover letter template', 'Full LinkedIn profile rewrite', 'One revision round'], who: 'Mid-career and senior professionals who want documents that match their real level.', pay: 'https://buy.stripe.com/9B69AUd7xaun7xNbnie7m00', via: 'stripe'},
+  {key: 'svc-brand', n: '02', lab: 'Done for you', name: 'Professional Brand Transformation', short: 'Your resume, cover letter and LinkedIn rewritten around the results you have delivered.', price: '$295', unit: 'one-time', time: '5–7 business days · 1 revision round · priced by level', inc: ['Discovery questionnaire and review', 'Rewritten, ATS-readable resume', 'Tailored cover letter template', 'Full LinkedIn profile rewrite', 'One revision round'], who: 'Mid-career and senior professionals who want documents that match their real level.', pay: 'https://buy.stripe.com/9B69AUd7xaun7xNbnie7m00', via: 'stripe', tiers: [['Mid-level', '$295', 'https://buy.stripe.com/9B69AUd7xaun7xNbnie7m00'], ['Senior', '$395', 'https://buy.stripe.com/7sY5kEc3taun5pF8b6e7m06'], ['Executive', '$495', 'https://buy.stripe.com/eVq9AUd7xgSLf0f62Ye7m02'], ['Director', '$695', 'https://buy.stripe.com/8x28wQ3wX45Zg4j0IEe7m07'], ['VP / C-suite', '$995', 'https://buy.stripe.com/eVq28s2sTdGz3hx772e7m08']]},
   {key: 'svc-executive', n: '03', lab: 'Senior leaders', name: 'Executive Career Transformation', short: 'Executive positioning, documents and a strategy consultation for leadership roles.', price: '$495', unit: 'one-time', time: '7–10 business days · 2 revision rounds', inc: ['Full executive positioning', 'Executive resume and cover letter', 'Executive LinkedIn profile', 'Career strategy consultation', 'Two revision rounds'], who: 'Directors, VPs and C-suite leaders preparing for their next senior move.', pay: 'https://buy.stripe.com/eVq9AUd7xgSLf0f62Ye7m02', via: 'stripe'},
   {key: 'svc-reverse', n: '04', lab: 'Search for you', name: 'Strategic Reverse Recruiting', short: 'Targeted outreach to decision-makers on your behalf, with weekly reporting.', price: '$600', unit: 'per month', time: 'Monthly agreement · weekly reports', inc: ['Target company and role list agreed with you', 'Outreach to decision-makers on your behalf', 'Weekly report of activity and responses', 'Ongoing positioning adjustments'], who: 'Busy professionals who want an expert running their search. No guarantee of interviews or offers.', pay: 'https://buy.stripe.com/3cIcN62sTbyr5pF772e7m03', via: 'stripe'},
   {key: 'svc-playbook', n: '05', lab: 'Do it yourself', name: 'Why Your Applications Go Silent', short: 'The 30-page playbook: diagnostic, LinkedIn audit, scripts and a 30-day plan.', price: '$11', unit: 'instant PDF', time: 'Instant download', inc: ['20-point Silent Application Diagnostic', '25-point LinkedIn audit', '8 outreach and negotiation scripts', '30-day recovery plan'], who: 'Job seekers who want to fix things themselves first.', pay: 'https://selar.com/34h77479i1?currency=USD', via: 'selar'},
@@ -240,7 +247,7 @@ const eb = (n, t) => `<div class="eyebrow"><b>✳</b>${n ? n + ' / ' : ''}${t}</
 const bc = (...p) => `<div class="bc"><a href="#home">Home</a>${p.map(x => ' / ' + x).join('')}</div>`;
 const METHODS = '<div class="methods"><span>Visa</span><span>Mastercard</span><span>American Express</span><span>+ wallets shown at checkout</span></div>';
 const payBtn = s => s.via === 'stripe'
-  ? `<a class="btn" href="${s.pay}" rel="noopener">${s.unit === 'per month' ? 'Start now' : 'Pay now'} · ${s.price}${s.unit === 'per month' ? '/month' : ''} ↗</a>${METHODS}<div class="secure">🔒 Secure card checkout by Stripe · prices in USD</div>`
+  ? `<a class="btn" href="${s.pay}" rel="noopener">${s.unit === 'per month' ? 'Start now' : 'Pay now'} · ${s.tiers ? s.tiers[0][0] + ' ' : ''}${s.price}${s.unit === 'per month' ? '/month' : ''} ↗</a>${METHODS}<div class="secure">🔒 Secure card checkout by Stripe · prices in USD</div>`
   : `<a class="btn" href="${s.pay}" rel="noopener">Buy now · ${s.price} ↗</a><div class="methods"><span>Card</span><span>Bank transfer</span><span>Local options at checkout</span></div><div class="secure">🔒 Secure checkout by Selar · switch currency at checkout</div>`;
 const svcCard = (s, big) => `<a class="card${big ? ' big' : ''}" href="#${s.key}" style="text-decoration:none"><span class="lab">${s.n} / ${s.lab}</span><span class="num">${s.n}</span><h3>${s.name}</h3><p>${s.short}</p><span class="price">From <b>${s.price} USD</b> ${s.unit === 'per month' ? '/ month' : ''}</span><span class="go">Explore service <i>↗</i></span></a>`;
 const expertCard = () => `<div class="who"><div class="avatar">${ini(E().name)}</div><div><span style="font-size:14px;color:var(--soft)">Your expert</span><b>${E().name}</b><span style="font-size:14px;color:var(--soft);display:block">${E().title}</span></div></div>`;
@@ -298,9 +305,11 @@ function svcView(s) {
       <ul class="list">${s.inc.map(x => `<li>${x}</li>`).join('')}</ul>
       <p class="note" style="font-size:15px;margin-top:20px"><b style="color:var(--ink)">Who it's for:</b> ${s.who}</p></div>
     <aside class="card paybox"><span class="lab" style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)">${s.time}</span>
-      <div class="big">${s.price} <small>USD ${s.unit}</small></div>${payBtn(s)}
+      <div class="big">${s.tiers ? '<small>From</small> ' : ''}${s.price} <small>USD ${s.unit}</small></div>${payBtn(s)}
       <a class="btn ghost" href="#contact" style="margin-top:10px">Ask ${first()} a question first</a></aside>
   </div>
+  ${s.tiers ? `<div class="dhead" style="margin-top:56px;align-items:center"><div>${eb('', 'Pricing by level')}<h2>Support at your <em>level.</em></h2><p class="lead">Choose your career level to pay and get started. Your expert tailors the depth of positioning to your seniority.</p><a class="go" href="#pricing" style="margin-top:10px">Compare all services <i>↗</i></a></div>
+  <div class="card tiers"><div class="th"><span>${s.name.split(' ').slice(1).join(' ')} / USD</span><span>Choose a level ↗</span></div>${s.tiers.map(t => `<a href="${t[2]}" rel="noopener"><span>${t[0]}</span><b>From ${t[1]} <i>↗</i></b></a>`).join('')}<div class="secure" style="padding:12px 0 0">🔒 Secure card checkout by Stripe</div></div></div>` : ''}
   ${s.via === 'stripe' ? `<div style="margin-top:56px">${eb('', 'After you pay')}<div class="aft">
     <div class="card"><b>01</b><h3>Instant receipt</h3><p>Stripe emails your receipt, and your expert is notified straight away.</p></div>
     <div class="card"><b>02</b><h3>Send your details</h3><p>You go to a short form for your resume, LinkedIn, target role and country.</p></div>
@@ -313,7 +322,7 @@ SERVICES.forEach(s => V[s.key] = () => svcView(s));
 V.pricing = () => `<section class="page"><div class="wrap">${bc('Pricing')}${eb('', 'Pricing')}
   <div class="split"><h2>Clear prices. <em>Pay in minutes.</em></h2><div><p>All prices in USD. Card payments are processed securely by Stripe; digital guides by Selar.</p></div></div>
   <div class="card scroll" style="padding:8px 18px"><table><thead><tr><th>Service</th><th>Includes</th><th>Turnaround</th><th>Price</th><th></th></tr></thead><tbody>
-  ${SERVICES.map(s => `<tr><td><a href="#${s.key}" style="font-weight:600;text-decoration:none">${s.name}</a></td><td style="color:var(--soft)">${s.inc.slice(0, 2).join(', ')}…</td><td style="color:var(--soft)">${s.time}</td><td class="p">${s.price}${s.unit === 'per month' ? '/mo' : ''}</td><td><a class="go" href="${s.pay}" rel="noopener">${s.via === 'stripe' ? 'Pay' : 'Buy'} <i>↗</i></a></td></tr>`).join('')}
+  ${SERVICES.map(s => `<tr><td><a href="#${s.key}" style="font-weight:600;text-decoration:none">${s.name}</a></td><td style="color:var(--soft)">${s.inc.slice(0, 2).join(', ')}…</td><td style="color:var(--soft)">${s.time}</td><td class="p">${s.tiers ? s.tiers[0][1] + '–' + s.tiers[s.tiers.length-1][1] : s.price}${s.unit === 'per month' ? '/mo' : ''}</td><td><a class="go" href="${s.tiers ? '#' + s.key : s.pay}" rel="noopener">${s.via === 'stripe' ? 'Pay' : 'Buy'} <i>↗</i></a></td></tr>`).join('')}
   </tbody></table></div>
   <p class="note">Prefer an invoice or bank transfer for a larger engagement? <a href="#contact">Request one here</a>.</p>
   <div style="margin-top:56px"><a class="btn ghost" href="#payment">How payment works →</a></div>
